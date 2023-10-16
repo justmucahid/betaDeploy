@@ -11,7 +11,7 @@ import './Home.css'
 
 const Canvas = props => {
 
-    const createScene = function (scene) {
+    const createScene = async function (scene) {
         //const scene = new Scene(engine);
         const canvas = scene.getEngine().getRenderingCanvas();
 
@@ -19,7 +19,7 @@ const Canvas = props => {
         camera.attachControl(canvas, true);
         const light = new HemisphericLight("light", new Vector3(1, 1, 0));
         
-        SceneLoader.ImportMesh("", "/src/assets/box/", 'scene.babylon',
+        await SceneLoader.ImportMeshAsync("", "/src/assets/box/", 'scene.babylon',
         scene, function(meshes){
 
             scene.createDefaultCameraOrLight(true,true,true);
