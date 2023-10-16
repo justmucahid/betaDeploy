@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArcRotateCamera, Vector3, HemisphericLight, SceneLoader } from '@babylonjs/core'
+import { ArcRotateCamera, Vector3, HemisphericLight, SceneLoader, MeshBuilder } from '@babylonjs/core'
 import '@babylonjs/loaders'
 import Smple from '../smple/Smple';
 import './Home.css'
@@ -19,7 +19,10 @@ const Canvas = props => {
         camera.attachControl(canvas, true);
         const light = new HemisphericLight("light", new Vector3(1, 1, 0));
 
-        const globeMesh = await SceneLoader.ImportMeshAsync("", "src/assets/box/", 'scene.babylon',
+        const ground = MeshBuilder.CreateGround("ground", { width: 0.2, height: 0.2 }, scene)
+        ground.position.y = 0
+
+        const globeMesh = await SceneLoader.ImportMeshAsync("", "src/assets/box/", 'anime.gltf',
             scene, function (meshes) {
             });
         const anima = globeMesh.meshes[0]
