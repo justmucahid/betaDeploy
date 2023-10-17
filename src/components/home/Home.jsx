@@ -19,7 +19,7 @@ const Canvas = props => {
         camera.attachControl(canvas, true);
         const light = new HemisphericLight("light", new Vector3(1, 1, 0));
 
-        const ground = MeshBuilder.CreateGround("ground", { width: 0.2, height: 0.2 }, scene)
+        const ground = MeshBuilder.CreateGround("ground", { width: 2, height: 2 }, scene)
         ground.position.y = 0
 
         const globeMesh = await SceneLoader.ImportMeshAsync("", "src/assets/box/", 'anime.gltf',
